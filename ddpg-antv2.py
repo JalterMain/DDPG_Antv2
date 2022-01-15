@@ -80,7 +80,6 @@ value = ValueNetwork()
 buffer = Buffer(15000, 100)
 target_policy = copy.deepcopy(policy)
 target_value = copy.deepcopy(value)
-policy_optim = optim.Adam(policy.parameters(), lr = 0.000003)
 value_optim = optim.Adam(value.parameters(), lr = 0.0001)
 policy_optim = optim.Adam(policy.parameters(), lr = 0.0001)
 loss_policy = 0
