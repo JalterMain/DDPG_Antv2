@@ -17,13 +17,11 @@ class PolicyNetwork(nn.Module):
 
     def __init__(self, beta):
         super().__init__()
-        self.model = nn.Sequential(nn.Linear(111, 32), nn.ReLU(),
-                                    nn.Linear(32, 32), nn.ReLU(),
-                                    nn.Linear(32, 8))
+        self.model = nn.Sequential(nn.Linear(111, 400), nn.ReLU(),
+                                    nn.Linear(400, 300), nn.ReLU(),
+                                    nn.Linear(300, 8))
         self.beta = beta
     def forward(self, x):
-        if x.shape[0] == 111:
-            x = torch.transpose(x, -1, 0)
         return torch.tanh(self.model(x))
 
     def explore(self, x):
@@ -35,13 +33,11 @@ class ValueNetwork(nn.Module):
 
     def __init__(self):
         super().__init__()
-        self.model = nn.Sequential(nn.Linear(119, 32), nn.ReLU(),
-                                    nn.Linear(32, 32), nn.ReLU(),
-                                    nn.Linear(32, 1))
+        self.model = nn.Sequential(nn.Linear(119, 400), nn.ReLU(),
+                                    nn.Linear(400, 300), nn.ReLU(),
+                                    nn.Linear(300, 1))
 
     def forward(self, x):
-        if x.shape[0] == 119:
-            x = torch.transpose(x, -1, 0)
         return self.model(x)
 
 class Buffer():
@@ -79,13 +75,14 @@ def extract(x):
 
     return f_tensor[0], f_tensor[1], f_tensor[2], f_tensor[3], f_tensor[4]
 
-policy = PolicyNetwork(0.2)
+policy = PolicyNetwork(0.1)
 value = ValueNetwork()
-buffer = Buffer(15000, 256)
+buffer = Buffer(15000, 100)
 target_policy = copy.deepcopy(policy)
 target_value = copy.deepcopy(value)
-value_optim = optim.Adam(value.parameters(), lr = 0.00001)
 policy_optim = optim.Adam(policy.parameters(), lr = 0.000003)
+value_optim = optim.Adam(value.parameters(), lr = 0.0001)
+policy_optim = optim.Adam(policy.parameters(), lr = 0.0001)
 loss_policy = 0
 episode = []
 loss_value = 0
