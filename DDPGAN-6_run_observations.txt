@@ -1,0 +1,12 @@
+- CPU & Memory Usage seem pretty normal.
+- After 150 episodes, episodic reward starts having a massive variance.
+- This is a sign of divergence / overestimation
+- This also is in line with the increasing value & policy loss.
+- Max episodic reward is > 2000, which is very impressive since at ep. 1000 there has not been full convergence.
+- Looking at the overall trendline it seems that the policy is becoming better after a lull period of 500 episodes.
+- This is probably due to incorrect estimates in the value function and overestimation error ->
+breaks down the policy a lot.
+- Perhaps increase batch_size, and limit the amount that the policy changes?
+- Perhaps the breakdowns are in line with the shift of target networks? Polyak averaging I guess.
+- Investigate GPU monitorring and etc.
+- Neptune artifacts?
