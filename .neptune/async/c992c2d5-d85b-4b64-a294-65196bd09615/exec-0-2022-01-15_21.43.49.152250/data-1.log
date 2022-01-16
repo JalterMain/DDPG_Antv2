@@ -1,0 +1,133 @@
+{"obj": {"type": "AssignString", "path": ["sys", "name"], "value": "Untitled"}, "version": 1}
+{"obj": {"type": "AssignString", "path": ["sys", "description"], "value": ""}, "version": 2}
+{"obj": {"type": "AssignString", "path": ["sys", "hostname"], "value": "Matthews-MacBook-Pro.local"}, "version": 3}
+{"obj": {"type": "AssignBool", "path": ["sys", "failed"], "value": false}, "version": 4}
+{"obj": {"type": "ClearStringLog", "path": ["monitoring", "stdout"]}, "version": 5}
+{"obj": {"type": "ClearStringLog", "path": ["monitoring", "stderr"]}, "version": 6}
+{"obj": {"type": "AssignString", "path": ["source_code", "entrypoint"], "value": "ddpg-antv2.py"}, "version": 7}
+{"obj": {"type": "UploadFileSet", "path": ["source_code", "files"], "file_globs": ["/Users/RAO/Documents/GitHub/DDPG_Antv2/ddpg-antv2.py"], "reset": "False"}, "version": 8}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "Info (NVML): NVML Shared Library Not Found. GPU usage metrics may not be reported. For more information, see https://docs.neptune.ai/you-should-know/what-can-you-log-and-display#hardware-consumption\n", "step": null, "ts": 1642301029.7584891}]}, "version": 9}
+{"obj": {"type": "ConfigFloatSeries", "path": ["monitoring", "cpu"], "min": 0.0, "max": 100.0, "unit": "%"}, "version": 10}
+{"obj": {"type": "ClearFloatLog", "path": ["monitoring", "cpu"]}, "version": 11}
+{"obj": {"type": "ConfigFloatSeries", "path": ["monitoring", "memory"], "min": 0.0, "max": 8.0, "unit": "GB"}, "version": 12}
+{"obj": {"type": "ClearFloatLog", "path": ["monitoring", "memory"]}, "version": 13}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "cpu"], "values": [{"value": 12.2, "step": null, "ts": 1642301029.760799}]}, "version": 14}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "memory"], "values": [{"value": 6.0589599609375, "step": null, "ts": 1642301029.760799}]}, "version": 15}
+{"obj": {"type": "AssignString", "path": ["network_hyperparameters", "Optimizer"], "value": "Adam"}, "version": 16}
+{"obj": {"type": "AssignFloat", "path": ["network_hyperparameters", "Value-learning_rate"], "value": 0.0001}, "version": 17}
+{"obj": {"type": "AssignFloat", "path": ["network_hyperparameters", "Policy-learning_rate"], "value": 0.0001}, "version": 18}
+{"obj": {"type": "AssignString", "path": ["network_hyperparameters", "loss_fn_value"], "value": "MSE"}, "version": 19}
+{"obj": {"type": "AssignString", "path": ["network_sizes", "ValueNet_size"], "value": "(119,400,300,1)"}, "version": 20}
+{"obj": {"type": "AssignString", "path": ["network_sizes", "PolicyNet_size"], "value": "(111,400,300,8)"}, "version": 21}
+{"obj": {"type": "AssignInt", "path": ["buffer_parameters", "buffer_maxsize"], "value": 15000}, "version": 22}
+{"obj": {"type": "AssignInt", "path": ["buffer_parameters", "batch_size"], "value": 100}, "version": 23}
+{"obj": {"type": "AssignInt", "path": ["buffer_parameters", "min_size_train"], "value": 1000}, "version": 24}
+{"obj": {"type": "AssignFloat", "path": ["policy_parameters", "exploration_noise"], "value": 0.1}, "version": 25}
+{"obj": {"type": "AssignFloat", "path": ["policy_parameters", "policy_smoothing"], "value": 0.1}, "version": 26}
+{"obj": {"type": "AssignFloat", "path": ["environment_parameters", "gamma"], "value": 0.99}, "version": 27}
+{"obj": {"type": "AssignString", "path": ["environment_parameters", "env_name"], "value": "Ant-v2"}, "version": 28}
+{"obj": {"type": "AssignInt", "path": ["environment_parameters", "episodes"], "value": 10000}, "version": 29}
+{"obj": {"type": "AssignInt", "path": ["environment_parameters", "steps_target"], "value": 10000}, "version": 30}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 972.4227669113187, "step": null, "ts": 1642301031.272341}]}, "version": 31}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.0, "step": null, "ts": 1642301031.272541}]}, "version": 32}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": 0.0, "step": null, "ts": 1642301031.272629}]}, "version": 33}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "cpu"], "values": [{"value": 19.7, "step": null, "ts": 1642301039.763582}]}, "version": 34}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "memory"], "values": [{"value": 6.101387023925781, "step": null, "ts": 1642301039.763582}]}, "version": 35}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -1813.3950461660575, "step": null, "ts": 1642301042.503608}]}, "version": 36}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -1813.3950461660575, "step": null, "ts": 1642301042.5125031}]}, "version": 37}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.1522563397884369, "step": null, "ts": 1642301042.515351}]}, "version": 38}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.6372889876365662, "step": null, "ts": 1642301042.515542}]}, "version": 39}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -88.3920409567879, "step": null, "ts": 1642301046.5114958}]}, "version": 40}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -88.3920409567879, "step": null, "ts": 1642301046.5532339}]}, "version": 41}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.044300734996795654, "step": null, "ts": 1642301046.5535429}]}, "version": 42}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.41748252511024475, "step": null, "ts": 1642301046.55372}]}, "version": 43}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -19.288536608388515, "step": null, "ts": 1642301046.8810592}]}, "version": 44}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -19.288536608388515, "step": null, "ts": 1642301046.896496}]}, "version": 45}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.050741735845804214, "step": null, "ts": 1642301046.8966558}]}, "version": 46}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.3211841881275177, "step": null, "ts": 1642301046.896735}]}, "version": 47}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -46.43328728196083, "step": null, "ts": 1642301047.219701}]}, "version": 48}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -46.43328728196083, "step": null, "ts": 1642301047.221387}]}, "version": 49}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.05618787184357643, "step": null, "ts": 1642301047.221514}]}, "version": 50}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.31772035360336304, "step": null, "ts": 1642301047.221588}]}, "version": 51}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "cpu"], "values": [{"value": 31.8, "step": null, "ts": 1642301049.7675672}]}, "version": 52}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "memory"], "values": [{"value": 5.849971771240234, "step": null, "ts": 1642301049.7675672}]}, "version": 53}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -130.24029336063765, "step": null, "ts": 1642301058.179193}]}, "version": 54}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -130.24029336063765, "step": null, "ts": 1642301058.186841}]}, "version": 55}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.040226347744464874, "step": null, "ts": 1642301058.187018}]}, "version": 56}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.3655453324317932, "step": null, "ts": 1642301058.187117}]}, "version": 57}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -3.123989665095925, "step": null, "ts": 1642301058.3010502}]}, "version": 58}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -3.123989665095925, "step": null, "ts": 1642301058.329269}]}, "version": 59}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.03217519074678421, "step": null, "ts": 1642301058.329424}]}, "version": 60}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.40493589639663696, "step": null, "ts": 1642301058.3295228}]}, "version": 61}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -13.753362526693836, "step": null, "ts": 1642301058.5343208}]}, "version": 62}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -13.753362526693836, "step": null, "ts": 1642301058.53525}]}, "version": 63}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.030483173206448555, "step": null, "ts": 1642301058.5353541}]}, "version": 64}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.40011510252952576, "step": null, "ts": 1642301058.535456}]}, "version": 65}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "cpu"], "values": [{"value": 24.1, "step": null, "ts": 1642301059.7726889}]}, "version": 66}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "memory"], "values": [{"value": 5.783535003662109, "step": null, "ts": 1642301059.7726889}]}, "version": 67}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -34.08399813661387, "step": null, "ts": 1642301061.071807}]}, "version": 68}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -34.08399813661387, "step": null, "ts": 1642301061.074238}]}, "version": 69}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.03167446330189705, "step": null, "ts": 1642301061.074381}]}, "version": 70}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.3895300328731537, "step": null, "ts": 1642301061.074462}]}, "version": 71}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -10.004529851927387, "step": null, "ts": 1642301061.897102}]}, "version": 72}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -10.004529851927387, "step": null, "ts": 1642301061.903994}]}, "version": 73}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.034773267805576324, "step": null, "ts": 1642301061.904139}]}, "version": 74}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.3784797191619873, "step": null, "ts": 1642301061.904219}]}, "version": 75}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -26.704315626696946, "step": null, "ts": 1642301062.603013}]}, "version": 76}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -26.704315626696946, "step": null, "ts": 1642301062.6060832}]}, "version": 77}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.03636763617396355, "step": null, "ts": 1642301062.606229}]}, "version": 78}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.3582618534564972, "step": null, "ts": 1642301062.606313}]}, "version": 79}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -42.88553298297916, "step": null, "ts": 1642301063.066376}]}, "version": 80}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -42.88553298297916, "step": null, "ts": 1642301063.068566}]}, "version": 81}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.03447268530726433, "step": null, "ts": 1642301063.068676}]}, "version": 82}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.3501676619052887, "step": null, "ts": 1642301063.0687518}]}, "version": 83}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "cpu"], "values": [{"value": 24.2, "step": null, "ts": 1642301069.777816}]}, "version": 84}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "memory"], "values": [{"value": 5.899223327636719, "step": null, "ts": 1642301069.777816}]}, "version": 85}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 234.25236135947748, "step": null, "ts": 1642301074.007935}]}, "version": 86}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 234.25236135947748, "step": null, "ts": 1642301074.0157282}]}, "version": 87}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.031518884003162384, "step": null, "ts": 1642301074.01585}]}, "version": 88}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.3969820737838745, "step": null, "ts": 1642301074.015925}]}, "version": 89}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 14.014676727455557, "step": null, "ts": 1642301074.76606}]}, "version": 90}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 14.014676727455557, "step": null, "ts": 1642301074.794673}]}, "version": 91}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.026415206491947174, "step": null, "ts": 1642301074.794838}]}, "version": 92}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.4182249903678894, "step": null, "ts": 1642301074.794924}]}, "version": 93}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 14.152313327917195, "step": null, "ts": 1642301075.090672}]}, "version": 94}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 14.152313327917195, "step": null, "ts": 1642301075.094375}]}, "version": 95}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.027557097375392914, "step": null, "ts": 1642301075.094502}]}, "version": 96}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.41387811303138733, "step": null, "ts": 1642301075.094581}]}, "version": 97}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 24.988671535461048, "step": null, "ts": 1642301075.634093}]}, "version": 98}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 24.988671535461048, "step": null, "ts": 1642301075.6354718}]}, "version": 99}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.026664040982723236, "step": null, "ts": 1642301075.635576}]}, "version": 100}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.40994060039520264, "step": null, "ts": 1642301075.635659}]}, "version": 101}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 94.82524199853255, "step": null, "ts": 1642301077.666547}]}, "version": 102}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 94.82524199853255, "step": null, "ts": 1642301077.669495}]}, "version": 103}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.025729933753609657, "step": null, "ts": 1642301077.669634}]}, "version": 104}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.44520092010498047, "step": null, "ts": 1642301077.6697128}]}, "version": 105}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "cpu"], "values": [{"value": 24.2, "step": null, "ts": 1642301079.781541}]}, "version": 106}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "memory"], "values": [{"value": 5.878971099853516, "step": null, "ts": 1642301079.781541}]}, "version": 107}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 306.18529827169937, "step": null, "ts": 1642301088.846611}]}, "version": 108}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 306.18529827169937, "step": null, "ts": 1642301088.8590841}]}, "version": 109}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.022984923794865608, "step": null, "ts": 1642301088.8592389}]}, "version": 110}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.4546307921409607, "step": null, "ts": 1642301088.859325}]}, "version": 111}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "cpu"], "values": [{"value": 24.6, "step": null, "ts": 1642301089.786019}]}, "version": 112}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "memory"], "values": [{"value": 6.0570526123046875, "step": null, "ts": 1642301089.786019}]}, "version": 113}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "traceback"], "values": [{"value": "An uncaught exception occurred while run was active on worker Matthews-MacBook-Pro.local.", "step": null, "ts": 1642301096.491671}, {"value": "Marking run as failed", "step": null, "ts": 1642301096.491671}, {"value": "Traceback:", "step": null, "ts": 1642301096.491671}, {"value": "  File \"ddpg-antv2.py\", line 141, in <module>\n    loss_policy.backward()\n", "step": null, "ts": 1642301096.491671}, {"value": "  File \"/Users/RAO/opt/anaconda3/lib/python3.8/site-packages/torch/tensor.py\", line 245, in backward\n    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)\n", "step": null, "ts": 1642301096.491671}, {"value": "  File \"/Users/RAO/opt/anaconda3/lib/python3.8/site-packages/torch/autograd/__init__.py\", line 145, in backward\n    Variable._execution_engine.run_backward(\n", "step": null, "ts": 1642301096.491671}, {"value": "", "step": null, "ts": 1642301096.491671}]}, "version": 114}
+{"obj": {"type": "AssignBool", "path": ["sys", "failed"], "value": true}, "version": 115}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "Traceback (most recent call last):\n", "step": null, "ts": 1642301096.492279}]}, "version": 116}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "  File \"ddpg-antv2.py\", line 141, in <module>\n", "step": null, "ts": 1642301096.492388}]}, "version": 117}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "    ", "step": null, "ts": 1642301096.492625}]}, "version": 118}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "loss_policy.backward()", "step": null, "ts": 1642301096.492713}]}, "version": 119}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "\n", "step": null, "ts": 1642301096.492807}]}, "version": 120}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "  File \"/Users/RAO/opt/anaconda3/lib/python3.8/site-packages/torch/tensor.py\", line 245, in backward\n", "step": null, "ts": 1642301096.4928799}]}, "version": 121}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "    ", "step": null, "ts": 1642301096.493114}]}, "version": 122}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)", "step": null, "ts": 1642301096.4931939}]}, "version": 123}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "\n", "step": null, "ts": 1642301096.493286}]}, "version": 124}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "  File \"/Users/RAO/opt/anaconda3/lib/python3.8/site-packages/torch/autograd/__init__.py\", line 145, in backward\n", "step": null, "ts": 1642301096.4933581}]}, "version": 125}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "    ", "step": null, "ts": 1642301096.493567}]}, "version": 126}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "Variable._execution_engine.run_backward(", "step": null, "ts": 1642301096.493644}]}, "version": 127}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "\n", "step": null, "ts": 1642301096.4937332}]}, "version": 128}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "KeyboardInterrupt", "step": null, "ts": 1642301096.4938009}]}, "version": 129}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "", "step": null, "ts": 1642301096.493865}]}, "version": 130}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "\n", "step": null, "ts": 1642301096.493931}]}, "version": 131}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "", "step": null, "ts": 1642301096.494076}]}, "version": 132}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Shutting down background jobs, please wait a moment...\n", "step": null, "ts": 1642301096.494194}]}, "version": 133}

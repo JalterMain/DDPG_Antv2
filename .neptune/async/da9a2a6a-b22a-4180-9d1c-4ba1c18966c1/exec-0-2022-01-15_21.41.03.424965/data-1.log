@@ -1,0 +1,43 @@
+{"obj": {"type": "AssignString", "path": ["sys", "name"], "value": "Untitled"}, "version": 1}
+{"obj": {"type": "AssignString", "path": ["sys", "description"], "value": ""}, "version": 2}
+{"obj": {"type": "AssignString", "path": ["sys", "hostname"], "value": "Matthews-MacBook-Pro.local"}, "version": 3}
+{"obj": {"type": "AssignBool", "path": ["sys", "failed"], "value": false}, "version": 4}
+{"obj": {"type": "ClearStringLog", "path": ["monitoring", "stdout"]}, "version": 5}
+{"obj": {"type": "ClearStringLog", "path": ["monitoring", "stderr"]}, "version": 6}
+{"obj": {"type": "AssignString", "path": ["source_code", "entrypoint"], "value": "ddpg-antv2.py"}, "version": 7}
+{"obj": {"type": "UploadFileSet", "path": ["source_code", "files"], "file_globs": ["/Users/RAO/Documents/GitHub/DDPG_Antv2/ddpg-antv2.py"], "reset": "False"}, "version": 8}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "Info (NVML): NVML Shared Library Not Found. GPU usage metrics may not be reported. For more information, see https://docs.neptune.ai/you-should-know/what-can-you-log-and-display#hardware-consumption\n", "step": null, "ts": 1642300864.180786}]}, "version": 9}
+{"obj": {"type": "ConfigFloatSeries", "path": ["monitoring", "cpu"], "min": 0.0, "max": 100.0, "unit": "%"}, "version": 10}
+{"obj": {"type": "ClearFloatLog", "path": ["monitoring", "cpu"]}, "version": 11}
+{"obj": {"type": "ConfigFloatSeries", "path": ["monitoring", "memory"], "min": 0.0, "max": 8.0, "unit": "GB"}, "version": 12}
+{"obj": {"type": "ClearFloatLog", "path": ["monitoring", "memory"]}, "version": 13}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "cpu"], "values": [{"value": 15.8, "step": null, "ts": 1642300864.183815}]}, "version": 14}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "memory"], "values": [{"value": 6.110633850097656, "step": null, "ts": 1642300864.183815}]}, "version": 15}
+{"obj": {"type": "AssignString", "path": ["network_hyperparameters", "Optimizer"], "value": "Adam"}, "version": 16}
+{"obj": {"type": "AssignFloat", "path": ["network_hyperparameters", "Value-learning_rate"], "value": 0.0001}, "version": 17}
+{"obj": {"type": "AssignFloat", "path": ["network_hyperparameters", "Policy-learning_rate"], "value": 0.0001}, "version": 18}
+{"obj": {"type": "AssignString", "path": ["network_hyperparameters", "loss_fn_value"], "value": "MSE"}, "version": 19}
+{"obj": {"type": "AssignString", "path": ["network_sizes", "ValueNet_size"], "value": "(119,400,300,1)"}, "version": 20}
+{"obj": {"type": "AssignString", "path": ["network_sizes", "PolicyNet_size"], "value": "(111,400,300,8)"}, "version": 21}
+{"obj": {"type": "AssignInt", "path": ["buffer_parameters", "buffer_maxsize"], "value": 15000}, "version": 22}
+{"obj": {"type": "AssignInt", "path": ["buffer_parameters", "batch_size"], "value": 100}, "version": 23}
+{"obj": {"type": "AssignInt", "path": ["buffer_parameters", "min_size_train"], "value": 1000}, "version": 24}
+{"obj": {"type": "AssignFloat", "path": ["policy_parameters", "exploration_noise"], "value": 0.1}, "version": 25}
+{"obj": {"type": "AssignFloat", "path": ["policy_parameters", "policy_smoothing"], "value": 0.1}, "version": 26}
+{"obj": {"type": "AssignFloat", "path": ["environment_parameters", "gamma"], "value": 0.99}, "version": 27}
+{"obj": {"type": "AssignString", "path": ["environment_parameters", "env_name"], "value": "Ant-v2"}, "version": 28}
+{"obj": {"type": "AssignInt", "path": ["environment_parameters", "episodes"], "value": 10000}, "version": 29}
+{"obj": {"type": "AssignInt", "path": ["environment_parameters", "steps_target"], "value": 10000}, "version": 30}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "traceback"], "values": [{"value": "An uncaught exception occurred while run was active on worker Matthews-MacBook-Pro.local.", "step": null, "ts": 1642300865.7259672}, {"value": "Marking run as failed", "step": null, "ts": 1642300865.7259672}, {"value": "Traceback:", "step": null, "ts": 1642300865.7259672}, {"value": "  File \"ddpg-antv2.py\", line 153, in <module>\n    mean_val_loss = sum(val_losses) / len(val_losses)\n", "step": null, "ts": 1642300865.7259672}, {"value": "division by zero", "step": null, "ts": 1642300865.7259672}]}, "version": 31}
+{"obj": {"type": "AssignBool", "path": ["sys", "failed"], "value": true}, "version": 32}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "Traceback (most recent call last):\n", "step": null, "ts": 1642300865.7270029}]}, "version": 33}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "  File \"ddpg-antv2.py\", line 153, in <module>\n", "step": null, "ts": 1642300865.7272398}]}, "version": 34}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "    ", "step": null, "ts": 1642300865.727704}]}, "version": 35}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "mean_val_loss = sum(val_losses) / len(val_losses)", "step": null, "ts": 1642300865.727921}]}, "version": 36}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "\n", "step": null, "ts": 1642300865.728032}]}, "version": 37}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "ZeroDivisionError", "step": null, "ts": 1642300865.72812}]}, "version": 38}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": ": ", "step": null, "ts": 1642300865.728197}]}, "version": 39}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "division by zero", "step": null, "ts": 1642300865.72827}]}, "version": 40}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "\n", "step": null, "ts": 1642300865.728348}]}, "version": 41}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "", "step": null, "ts": 1642300865.728547}]}, "version": 42}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Shutting down background jobs, please wait a moment...\n", "step": null, "ts": 1642300865.72869}]}, "version": 43}
