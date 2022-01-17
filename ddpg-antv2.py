@@ -133,15 +133,16 @@ for e in range(episodes):
             value_optim.zero_grad()
             policy_optim.zero_grad()
 
-            # training policy
-            samples = buffer.mini_batch()
-            loss_policy = -(value(torch.cat((initial_states, policy.explore(initial_states)),1)).mean())
-            pol_losses.append(loss_policy)
-            # run['train/policy_loss'].log(loss_policy)
-            loss_policy.backward()
-            policy_optim.step()
-            value_optim.zero_grad()
-            policy_optim.zero_grad()
+            if steps % 2 == 0:
+                # training policy
+                samples = buffer.mini_batch()
+                loss_policy = -(value(torch.cat((initial_states, policy.explore(initial_states)),1)).mean())
+                pol_losses.append(loss_policy)
+                # run['train/policy_loss'].log(loss_policy)
+                loss_policy.backward()
+                policy_optim.step()
+                value_optim.zero_grad()
+                policy_optim.zero_grad()
 
         steps += 1
         #print(f"Step #{steps}: {-loss_policy}")
@@ -158,6 +159,10 @@ for e in range(episodes):
         mean_pol_loss = sum(pol_losses) / len(pol_losses)
         run['train/mean_episodic_value_loss'].log(mean_val_loss)
         run['train/mean_episodic_policy_loss'].log(mean_pol_loss)
+    if e % 100 == 0:
+        name = f'episode{e}_policynet.pt'
+        torch.save(policy, name)
+        run['model_checkpoints/policy'].upload(name)
     # print(f"Episode # {e}:{episode_reward}, Steps: {steps}, Loss value: {loss_value}, loss policy: {loss_policy}")
 
 run.stop()
