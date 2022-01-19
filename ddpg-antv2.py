@@ -1,20 +1,10 @@
-import gym, torch, random
+import gym, torch, random, copy
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
-import statistics
 import torch.nn.functional as F
-import copy
-import sys
-# Stat tracking with neptune.ai
 import neptune.new as neptune
-run = neptune.init(project = "jaltermain/DDPGAntv-2")
 
-env = gym.make('Ant-v2')
-episodes = 1000
-gamma = 0.99
-loss_fn = nn.MSELoss()
-steps = 0
 # initialize policy & value network
 class PolicyNetwork(nn.Module):
 
@@ -59,6 +49,7 @@ class Buffer():
     def mini_batch(self):
         return random.sample(self.buffer, self.batch_size)
 
+# This is messy
 def extract(x):
 
     f_tensor = []
@@ -78,91 +69,132 @@ def extract(x):
 
     return f_tensor[0], f_tensor[1], f_tensor[2], f_tensor[3], f_tensor[4]
 
+class TrainingLoop():
+    def __init__(self, policy_net, value_net, buffer, value_optim, policy_optim, episodes = 1000, gamma = 0.99, loss_fn = nn.MSELoss(), env=gym.make('Ant-v2'), k = 2, min_buffer_size = 1000, tau = 0.0005):
+        self.policy_net = policy_net
+        self.value_net = value_net
+        self.target_policy = copy.deepcopy(self.policy_net)
+        self.target_value = copy.deepcopy(self.value_net)
+        self.buffer = buffer
+        self.value_optim = value_optim
+        self.policy_optim = policy_optim
+        self.episodes = episodes
+        self.gamma = gamma
+        self.loss_fn = loss_fn
+        self.extract_fn = extract
+        self.episode_reward = 0
+        self.env = env
+        self.k = k
+        self.run = neptune.init(project = "jaltermain/DDPGAntv-2")
+        self.initial_obs = None
+        self.val_losses = []
+        self.pol_losses = []
+        self.min_buffer_size = min_buffer_size
+        self.done = False
+        self.steps = 0
+        self.tau = tau
+
+    def interact(self):
+        action = (self.policy_net.explore(self.initial_obs)).detach()
+        obs, reward, done, _ = self.env.step(action.numpy()) # make sure the done flag is not time out
+        self.episode_reward += reward
+        self.buffer.add((self.initial_obs, action, reward, obs, done)) # (s, a, r, s')
+        self.initial_obs = obs
+        self.done = done
+
+    def get_batch(self):
+        samples = self.buffer.mini_batch()
+        return self.extract_fn(samples)
+
+    def train_value(self):
+        initial_states, actions, rewards, states, finished = self.get_batch()
+        q_model = value(torch.cat((initial_states, actions), 1))
+        q_bellman = rewards + self.gamma * self.target_value(torch.cat((states, self.target_policy(states)),1)) * (1-finished)
+        loss_value = self.loss_fn(q_model, q_bellman.detach())
+        self.val_losses.append(loss_value.detach())
+        # run['train/value_loss'].log(loss_value)
+        loss_value.backward()
+        # print([i.grad for i in target_value.parameters()])
+        self.value_optim.step()
+        self.value_optim.zero_grad()
+        self.policy_optim.zero_grad()
+
+    def train_policy(self):
+        initial_states, actions, rewards, states, finished = self.get_batch()
+        loss_policy = -(self.value_net(torch.cat((initial_states, self.policy_net.explore(initial_states)),1)).mean())
+        self.pol_losses.append(loss_policy.detach())
+        # run['train/policy_loss'].log(loss_policy)
+        loss_policy.backward()
+        self.policy_optim.step()
+        self.value_optim.zero_grad()
+        self.policy_optim.zero_grad()
+
+    def polyak_averaging(self):
+        params1 = self.value_net.named_parameters()
+        params2 = self.target_value.named_parameters()
+
+        dict_params2 = dict(params2)
+
+        for name1, param1 in params1:
+            if name1 in dict_params2:
+                dict_params2[name1].data.copy_(self.tau*param1.data + (1-self.tau)*dict_params2[name1].data)
+        if self.steps % self.k == 0:
+            params1 = self.policy_net.named_parameters()
+            params2 = self.target_policy.named_parameters()
+
+            dict_params2 = dict(params2)
+
+            for name1, param1 in params1:
+                if name1 in dict_params2:
+                    dict_params2[name1].data.copy_(self.tau*param1.data + (1-self.tau)*dict_params2[name1].data)
+
+    def init_log(self):
+        network_hyperparams = {'Optimizer': 'Adam','Value-learning_rate': 0.0001, 'Policy-learning_rate': 0.0001, 'loss_fn_value': 'MSE'}
+        self.run["network_hyperparameters"] = network_hyperparams
+        network_sizes = {'ValueNet_size': '(119,400,300,1)', 'PolicyNet_size': '(111,400,300,8)'}
+        self.run["network_sizes"] = network_sizes
+        buffer_params = {'buffer_maxsize': self.buffer.max_size, 'batch_size': self.buffer.batch_size, 'min_size_train': self.min_buffer_size}
+        self.run['buffer_parameters'] = buffer_params
+        policy_params = {'exploration_noise': policy.beta, 'policy_smoothing': policy.beta}
+        self.run['policy_parameters'] = policy_params
+        environment_params = {'gamma': self.gamma, 'env_name': 'Ant-v2', 'episodes': self.episodes}
+        self.run['environment_parameters'] = environment_params
+
+        self.run['environment_parameters'] = environment_params
+    def log(self):
+        self.run['train/episode_reward'].log(self.episode_reward)
+        if not self.val_losses:
+            self.run['train/mean_episodic_value_loss'].log(0)
+            self.run['train/mean_episodic_policy_loss'].log(0)
+        else:
+            mean_val_loss = sum(self.val_losses) / len(self.val_losses)
+            mean_pol_loss = sum(self.pol_losses) / len(self.pol_losses)
+            self.run['train/mean_episodic_value_loss'].log(mean_val_loss)
+            self.run['train/mean_episodic_policy_loss'].log(mean_pol_loss)
+
+    def training_loop(self):
+        self.init_log()
+        for e in range(self.episodes):
+            self.episode_reward = 0
+            self.done = False
+            self.val_losses, self.pol_losses = [], []
+            self.initial_obs = self.env.reset()
+            while not self.done:
+                self.interact()
+                if len(self.buffer.buffer) > self.min_buffer_size:
+                    self.train_value()
+                    if self.steps % self.k == 0:
+                        self.train_policy()
+                self.polyak_averaging()
+                self.steps += 1
+            self.log()
+        self.run.stop()
+
 policy = PolicyNetwork(0.1)
 value = ValueNetwork()
-buffer = Buffer(15000, 256)
-target_policy = copy.deepcopy(policy)
-target_value = copy.deepcopy(value)
-value_lr = 0.0001
-policy_lr = 0.0001
-value_optim = optim.Adam(value.parameters(), lr = value_lr)
-policy_optim = optim.Adam(policy.parameters(), lr = policy_lr)
-loss_policy = 0
-episode = []
-loss_value = 0
+buffer = Buffer(15000, 128)
+value_optim = optim.Adam(value.parameters(), lr = 0.0001)
+policy_optim = optim.Adam(policy.parameters(), lr = 0.0001)
 
-# some neptune logging
-network_hyperparams = {'Optimizer': 'Adam','Value-learning_rate': value_lr, 'Policy-learning_rate': policy_lr, 'loss_fn_value': 'MSE'}
-run["network_hyperparameters"] = network_hyperparams
-network_sizes = {'ValueNet_size': '(119,400,300,1)', 'PolicyNet_size': '(111,400,300,8)'}
-run["network_sizes"] = network_sizes
-buffer_params = {'buffer_maxsize': buffer.max_size, 'batch_size': buffer.batch_size, 'min_size_train': 1000}
-run['buffer_parameters'] = buffer_params
-policy_params = {'exploration_noise': policy.beta, 'policy_smoothing': policy.beta}
-run['policy_parameters'] = policy_params
-environment_params = {'gamma': gamma, 'env_name': 'Ant-v2', 'episodes': episodes, 'steps_target': 10000}
-run['environment_parameters'] = environment_params
-
-
-for e in range(episodes):
-    initial_obs = env.reset()
-    episode_reward = 0
-    val_losses = []
-    pol_losses = []
-    done = False
-    while not done:
-        action = (policy.explore(initial_obs)).detach()
-        obs, reward, done, _ = env.step(action.numpy()) # make sure the done flag is not time out
-        episode_reward += reward
-        buffer.add((initial_obs, action, reward, obs, done)) # (s, a, r, s')
-        initial_obs = obs
-
-        if len(buffer.buffer) > 1000:
-
-            # training value
-            samples = buffer.mini_batch()
-            initial_states, actions, rewards, states, finished = extract(samples)
-            q_model = value(torch.cat((initial_states, actions), 1))
-            q_bellman = rewards + gamma * target_value(torch.cat((states, target_policy(states)),1)) * (1-finished)
-            loss_value = loss_fn(q_model, q_bellman.detach())
-            val_losses.append(loss_value)
-            # run['train/value_loss'].log(loss_value)
-            loss_value.backward()
-            # print([i.grad for i in target_value.parameters()])
-            value_optim.step()
-            value_optim.zero_grad()
-            policy_optim.zero_grad()
-
-            if steps % 4 == 0:
-                # training policy
-                samples = buffer.mini_batch()
-                loss_policy = -(value(torch.cat((initial_states, policy.explore(initial_states)),1)).mean())
-                pol_losses.append(loss_policy)
-                # run['train/policy_loss'].log(loss_policy)
-                loss_policy.backward()
-                policy_optim.step()
-                value_optim.zero_grad()
-                policy_optim.zero_grad()
-
-        steps += 1
-        #print(f"Step #{steps}: {-loss_policy}")
-
-        if steps % 10000 == 0:
-            target_policy = copy.deepcopy(policy)
-            target_value = copy.deepcopy(value)
-    run['train/episode_reward'].log(episode_reward)
-    if not val_losses:
-        run['train/mean_episodic_value_loss'].log(0)
-        run['train/mean_episodic_policy_loss'].log(0)
-    else:
-        mean_val_loss = sum(val_losses) / len(val_losses)
-        mean_pol_loss = sum(pol_losses) / len(pol_losses)
-        run['train/mean_episodic_value_loss'].log(mean_val_loss)
-        run['train/mean_episodic_policy_loss'].log(mean_pol_loss)
-    if e % 100 == 0:
-        name = f'episode{e}_policynet.pt'
-        torch.save(policy, name)
-        run['model_checkpoints/policy'].upload(name)
-    # print(f"Episode # {e}:{episode_reward}, Steps: {steps}, Loss value: {loss_value}, loss policy: {loss_policy}")
-
-run.stop()
+training_loop = TrainingLoop(policy, value, buffer, value_optim, policy_optim)
+training_loop.training_loop()

@@ -8,5 +8,5 @@
 breaks down the policy a lot.
 - Perhaps increase batch_size, and limit the amount that the policy changes?
 - Perhaps the breakdowns are in line with the shift of target networks? Polyak averaging I guess.
-- Investigate GPU monitorring and etc.
+- Investigate GPU monitoring and etc.
 - Neptune artifacts?
