@@ -80,7 +80,7 @@ def extract(x):
 
 policy = PolicyNetwork(0.1)
 value = ValueNetwork()
-buffer = Buffer(15000, 100)
+buffer = Buffer(15000, 256)
 target_policy = copy.deepcopy(policy)
 target_value = copy.deepcopy(value)
 value_lr = 0.0001
@@ -133,7 +133,7 @@ for e in range(episodes):
             value_optim.zero_grad()
             policy_optim.zero_grad()
 
-            if steps % 2 == 0:
+            if steps % 4 == 0:
                 # training policy
                 samples = buffer.mini_batch()
                 loss_policy = -(value(torch.cat((initial_states, policy.explore(initial_states)),1)).mean())

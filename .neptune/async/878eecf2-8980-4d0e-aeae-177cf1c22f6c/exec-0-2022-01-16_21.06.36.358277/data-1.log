@@ -1,0 +1,117 @@
+{"obj": {"type": "AssignString", "path": ["sys", "name"], "value": "Untitled"}, "version": 1}
+{"obj": {"type": "AssignString", "path": ["sys", "description"], "value": ""}, "version": 2}
+{"obj": {"type": "AssignString", "path": ["sys", "hostname"], "value": "Matthews-MacBook-Pro.local"}, "version": 3}
+{"obj": {"type": "AssignBool", "path": ["sys", "failed"], "value": false}, "version": 4}
+{"obj": {"type": "ClearStringLog", "path": ["monitoring", "stdout"]}, "version": 5}
+{"obj": {"type": "ClearStringLog", "path": ["monitoring", "stderr"]}, "version": 6}
+{"obj": {"type": "AssignString", "path": ["source_code", "entrypoint"], "value": "ddpg-antv2.py"}, "version": 7}
+{"obj": {"type": "UploadFileSet", "path": ["source_code", "files"], "file_globs": ["/Users/RAO/Documents/GitHub/DDPG_Antv2/ddpg-antv2.py"], "reset": "False"}, "version": 8}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "Info (NVML): NVML Shared Library Not Found. GPU usage metrics may not be reported. For more information, see https://docs.neptune.ai/you-should-know/what-can-you-log-and-display#hardware-consumption\n", "step": null, "ts": 1642385196.947613}]}, "version": 9}
+{"obj": {"type": "ConfigFloatSeries", "path": ["monitoring", "cpu"], "min": 0.0, "max": 100.0, "unit": "%"}, "version": 10}
+{"obj": {"type": "ClearFloatLog", "path": ["monitoring", "cpu"]}, "version": 11}
+{"obj": {"type": "ConfigFloatSeries", "path": ["monitoring", "memory"], "min": 0.0, "max": 8.0, "unit": "GB"}, "version": 12}
+{"obj": {"type": "ClearFloatLog", "path": ["monitoring", "memory"]}, "version": 13}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "cpu"], "values": [{"value": 11.3, "step": null, "ts": 1642385196.949713}]}, "version": 14}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "memory"], "values": [{"value": 5.606208801269531, "step": null, "ts": 1642385196.949713}]}, "version": 15}
+{"obj": {"type": "AssignString", "path": ["network_hyperparameters", "Optimizer"], "value": "Adam"}, "version": 16}
+{"obj": {"type": "AssignFloat", "path": ["network_hyperparameters", "Value-learning_rate"], "value": 0.0001}, "version": 17}
+{"obj": {"type": "AssignFloat", "path": ["network_hyperparameters", "Policy-learning_rate"], "value": 0.0001}, "version": 18}
+{"obj": {"type": "AssignString", "path": ["network_hyperparameters", "loss_fn_value"], "value": "MSE"}, "version": 19}
+{"obj": {"type": "AssignString", "path": ["network_sizes", "ValueNet_size"], "value": "(119,400,300,1)"}, "version": 20}
+{"obj": {"type": "AssignString", "path": ["network_sizes", "PolicyNet_size"], "value": "(111,400,300,8)"}, "version": 21}
+{"obj": {"type": "AssignInt", "path": ["buffer_parameters", "buffer_maxsize"], "value": 15000}, "version": 22}
+{"obj": {"type": "AssignInt", "path": ["buffer_parameters", "batch_size"], "value": 100}, "version": 23}
+{"obj": {"type": "AssignInt", "path": ["buffer_parameters", "min_size_train"], "value": 1000}, "version": 24}
+{"obj": {"type": "AssignFloat", "path": ["policy_parameters", "exploration_noise"], "value": 0.1}, "version": 25}
+{"obj": {"type": "AssignFloat", "path": ["policy_parameters", "policy_smoothing"], "value": 0.1}, "version": 26}
+{"obj": {"type": "AssignFloat", "path": ["environment_parameters", "gamma"], "value": 0.99}, "version": 27}
+{"obj": {"type": "AssignString", "path": ["environment_parameters", "env_name"], "value": "Ant-v2"}, "version": 28}
+{"obj": {"type": "AssignInt", "path": ["environment_parameters", "episodes"], "value": 1000}, "version": 29}
+{"obj": {"type": "AssignInt", "path": ["environment_parameters", "steps_target"], "value": 10000}, "version": 30}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 951.4338184897131, "step": null, "ts": 1642385198.456832}]}, "version": 31}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.0, "step": null, "ts": 1642385198.457042}]}, "version": 32}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": 0.0, "step": null, "ts": 1642385198.4571352}]}, "version": 33}
+{"obj": {"type": "UploadFile", "path": ["model_checkpoints", "policy"], "ext": "", "file_path": "/Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode0_policynet"}, "version": 34}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "Error occurred during asynchronous operation processing: Cannot upload file /Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode0_policynet: Path not found or is a not a file.\n", "step": null, "ts": 1642385202.9092789}]}, "version": 35}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -232.58077176317593, "step": null, "ts": 1642385206.915753}]}, "version": 36}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.06357534229755402, "step": null, "ts": 1642385206.9240751}]}, "version": 37}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.7555511593818665, "step": null, "ts": 1642385206.9243772}]}, "version": 38}
+{"obj": {"type": "UploadFile", "path": ["model_checkpoints", "policy"], "ext": "", "file_path": "/Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode1_policynet"}, "version": 39}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "cpu"], "values": [{"value": 17.7, "step": null, "ts": 1642385206.954468}]}, "version": 40}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "memory"], "values": [{"value": 5.581142425537109, "step": null, "ts": 1642385206.954468}]}, "version": 41}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "Error occurred during asynchronous operation processing: Cannot upload file /Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode1_policynet: Path not found or is a not a file.\n", "step": null, "ts": 1642385209.0931861}]}, "version": 42}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 265.0086237375049, "step": null, "ts": 1642385215.321996}]}, "version": 43}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.015092631801962852, "step": null, "ts": 1642385215.347615}]}, "version": 44}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.8245246410369873, "step": null, "ts": 1642385215.347774}]}, "version": 45}
+{"obj": {"type": "UploadFile", "path": ["model_checkpoints", "policy"], "ext": "", "file_path": "/Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode2_policynet"}, "version": 46}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 13.439687259712692, "step": null, "ts": 1642385216.179498}]}, "version": 47}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.016613347455859184, "step": null, "ts": 1642385216.202294}]}, "version": 48}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.773908257484436, "step": null, "ts": 1642385216.202441}]}, "version": 49}
+{"obj": {"type": "UploadFile", "path": ["model_checkpoints", "policy"], "ext": "", "file_path": "/Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode3_policynet"}, "version": 50}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "cpu"], "values": [{"value": 17.5, "step": null, "ts": 1642385216.9585862}]}, "version": 51}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "memory"], "values": [{"value": 5.608306884765625, "step": null, "ts": 1642385216.9585862}]}, "version": 52}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "Error occurred during asynchronous operation processing: Cannot upload file /Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode3_policynet: Path not found or is a not a file.\n", "step": null, "ts": 1642385219.743922}]}, "version": 53}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -35.09962890861253, "step": null, "ts": 1642385222.254754}]}, "version": 54}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.015397502109408379, "step": null, "ts": 1642385222.2608771}]}, "version": 55}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.7438029050827026, "step": null, "ts": 1642385222.260993}]}, "version": 56}
+{"obj": {"type": "UploadFile", "path": ["model_checkpoints", "policy"], "ext": "", "file_path": "/Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode4_policynet"}, "version": 57}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -15.190370816196076, "step": null, "ts": 1642385223.169952}]}, "version": 58}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.025266554206609726, "step": null, "ts": 1642385223.1837661}]}, "version": 59}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.6771117448806763, "step": null, "ts": 1642385223.18391}]}, "version": 60}
+{"obj": {"type": "UploadFile", "path": ["model_checkpoints", "policy"], "ext": "", "file_path": "/Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode5_policynet"}, "version": 61}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 3.9501801194835773, "step": null, "ts": 1642385223.4674292}]}, "version": 62}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.02438788302242756, "step": null, "ts": 1642385223.470581}]}, "version": 63}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.6484951972961426, "step": null, "ts": 1642385223.470699}]}, "version": 64}
+{"obj": {"type": "UploadFile", "path": ["model_checkpoints", "policy"], "ext": "", "file_path": "/Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode6_policynet"}, "version": 65}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -18.821666957464632, "step": null, "ts": 1642385223.630013}]}, "version": 66}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.02283196896314621, "step": null, "ts": 1642385223.6311219}]}, "version": 67}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.6710530519485474, "step": null, "ts": 1642385223.631226}]}, "version": 68}
+{"obj": {"type": "UploadFile", "path": ["model_checkpoints", "policy"], "ext": "", "file_path": "/Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode7_policynet"}, "version": 69}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -3.3486180389379077, "step": null, "ts": 1642385223.730942}]}, "version": 70}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.029612910002470016, "step": null, "ts": 1642385223.7316139}]}, "version": 71}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.6510358452796936, "step": null, "ts": 1642385223.731714}]}, "version": 72}
+{"obj": {"type": "UploadFile", "path": ["model_checkpoints", "policy"], "ext": "", "file_path": "/Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode8_policynet"}, "version": 73}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "Error occurred during asynchronous operation processing: Cannot upload file /Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode8_policynet: Path not found or is a not a file.\n", "step": null, "ts": 1642385225.0193741}]}, "version": 74}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "cpu"], "values": [{"value": 17.6, "step": null, "ts": 1642385226.9635122}]}, "version": 75}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "memory"], "values": [{"value": 5.596412658691406, "step": null, "ts": 1642385226.9635122}]}, "version": 76}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -237.00420544827878, "step": null, "ts": 1642385232.118509}]}, "version": 77}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.02393159456551075, "step": null, "ts": 1642385232.123903}]}, "version": 78}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.594014048576355, "step": null, "ts": 1642385232.124005}]}, "version": 79}
+{"obj": {"type": "UploadFile", "path": ["model_checkpoints", "policy"], "ext": "", "file_path": "/Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode9_policynet"}, "version": 80}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -28.428593692021384, "step": null, "ts": 1642385232.469315}]}, "version": 81}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.029986809939146042, "step": null, "ts": 1642385232.488801}]}, "version": 82}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.5148236155509949, "step": null, "ts": 1642385232.488956}]}, "version": 83}
+{"obj": {"type": "UploadFile", "path": ["model_checkpoints", "policy"], "ext": "", "file_path": "/Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode10_policynet"}, "version": 84}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": 0.5854657851286786, "step": null, "ts": 1642385234.098305}]}, "version": 85}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.03124348260462284, "step": null, "ts": 1642385234.100621}]}, "version": 86}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.512589156627655, "step": null, "ts": 1642385234.100733}]}, "version": 87}
+{"obj": {"type": "UploadFile", "path": ["model_checkpoints", "policy"], "ext": "", "file_path": "/Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode11_policynet"}, "version": 88}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -8.945283772837149, "step": null, "ts": 1642385234.191725}]}, "version": 89}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.029972011223435402, "step": null, "ts": 1642385234.1955898}]}, "version": 90}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.5174970030784607, "step": null, "ts": 1642385234.1957288}]}, "version": 91}
+{"obj": {"type": "UploadFile", "path": ["model_checkpoints", "policy"], "ext": "", "file_path": "/Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode12_policynet"}, "version": 92}
+{"obj": {"type": "LogFloats", "path": ["train", "episode_reward"], "values": [{"value": -27.213590539301368, "step": null, "ts": 1642385235.218577}]}, "version": 93}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_value_loss"], "values": [{"value": 0.03111688420176506, "step": null, "ts": 1642385235.219619}]}, "version": 94}
+{"obj": {"type": "LogFloats", "path": ["train", "mean_episodic_policy_loss"], "values": [{"value": -0.49862903356552124, "step": null, "ts": 1642385235.219719}]}, "version": 95}
+{"obj": {"type": "UploadFile", "path": ["model_checkpoints", "policy"], "ext": "", "file_path": "/Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode13_policynet"}, "version": 96}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "Error occurred during asynchronous operation processing: Cannot upload file /Users/RAO/Documents/GitHub/DDPG_Antv2/model_checkpoints/episode13_policynet: Path not found or is a not a file.\n", "step": null, "ts": 1642385235.4871721}]}, "version": 97}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "traceback"], "values": [{"value": "An uncaught exception occurred while run was active on worker Matthews-MacBook-Pro.local.", "step": null, "ts": 1642385235.867976}, {"value": "Marking run as failed", "step": null, "ts": 1642385235.867976}, {"value": "Traceback:", "step": null, "ts": 1642385235.867976}, {"value": "  File \"ddpg-antv2.py\", line 142, in <module>\n    loss_policy.backward()\n", "step": null, "ts": 1642385235.867976}, {"value": "  File \"/Users/RAO/opt/anaconda3/lib/python3.8/site-packages/torch/tensor.py\", line 245, in backward\n    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)\n", "step": null, "ts": 1642385235.867976}, {"value": "  File \"/Users/RAO/opt/anaconda3/lib/python3.8/site-packages/torch/autograd/__init__.py\", line 145, in backward\n    Variable._execution_engine.run_backward(\n", "step": null, "ts": 1642385235.867976}, {"value": "", "step": null, "ts": 1642385235.867976}]}, "version": 98}
+{"obj": {"type": "AssignBool", "path": ["sys", "failed"], "value": true}, "version": 99}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "Traceback (most recent call last):\n", "step": null, "ts": 1642385235.868613}]}, "version": 100}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "  File \"ddpg-antv2.py\", line 142, in <module>\n", "step": null, "ts": 1642385235.86873}]}, "version": 101}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "    ", "step": null, "ts": 1642385235.868958}]}, "version": 102}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "loss_policy.backward()", "step": null, "ts": 1642385235.869042}]}, "version": 103}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "\n", "step": null, "ts": 1642385235.869123}]}, "version": 104}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "  File \"/Users/RAO/opt/anaconda3/lib/python3.8/site-packages/torch/tensor.py\", line 245, in backward\n", "step": null, "ts": 1642385235.869202}]}, "version": 105}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "    ", "step": null, "ts": 1642385235.869428}]}, "version": 106}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)", "step": null, "ts": 1642385235.869507}]}, "version": 107}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "\n", "step": null, "ts": 1642385235.8695838}]}, "version": 108}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "  File \"/Users/RAO/opt/anaconda3/lib/python3.8/site-packages/torch/autograd/__init__.py\", line 145, in backward\n", "step": null, "ts": 1642385235.869666}]}, "version": 109}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "    ", "step": null, "ts": 1642385235.8698812}]}, "version": 110}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "Variable._execution_engine.run_backward(", "step": null, "ts": 1642385235.8699598}]}, "version": 111}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "\n", "step": null, "ts": 1642385235.870037}]}, "version": 112}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "KeyboardInterrupt", "step": null, "ts": 1642385235.8701088}]}, "version": 113}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "", "step": null, "ts": 1642385235.870178}]}, "version": 114}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stderr"], "values": [{"value": "\n", "step": null, "ts": 1642385235.870249}]}, "version": 115}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "", "step": null, "ts": 1642385235.870401}]}, "version": 116}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Shutting down background jobs, please wait a moment...\n", "step": null, "ts": 1642385235.870524}]}, "version": 117}
