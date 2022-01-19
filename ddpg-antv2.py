@@ -172,6 +172,18 @@ class TrainingLoop():
             self.run['train/mean_episodic_value_loss'].log(mean_val_loss)
             self.run['train/mean_episodic_policy_loss'].log(mean_pol_loss)
 
+    def evaluation_loop(self):
+        self.episode_reward = 0
+        self.done = False
+        self.initial_obs = self.env.reset()
+        while not self.done:
+            action = (self.policy_net(self.initial_obs)).detach()
+            obs, reward, done, _ = self.env.step(action.numpy()) # make sure the done flag is not time out
+            self.episode_reward += reward
+            self.initial_obs = obs
+            self.done = done
+        self.run['validation/episode_reward'].log(self.episode_reward)
+
     def training_loop(self):
         self.init_log()
         for e in range(self.episodes):
@@ -188,6 +200,7 @@ class TrainingLoop():
                 self.polyak_averaging()
                 self.steps += 1
             self.log()
+            self.evaluation_loop()
         self.run.stop()
 
 policy = PolicyNetwork(0.1)
