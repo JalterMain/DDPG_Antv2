@@ -15,6 +15,8 @@ class PolicyNetwork(nn.Module):
                                     nn.Linear(300, 8))
         self.beta = beta
     def forward(self, x):
+        if not isinstance(x, torch.Tensor):
+            x = torch.from_numpy(x).float()
         return torch.tanh(self.model(x))
 
     def explore(self, x):
